@@ -72,6 +72,7 @@ export default function TimerIntervals() {
     control,
     watch,
     formState: { isSubmitting, errors },
+    // } = useForm<TimeIntervalsFormInput>({
   } = useForm<TimeIntervalsFormInput, unknown, TimeIntervalsFormOutput>({
     resolver: zodResolver(timeIntervalsFormSchema),
     defaultValues: {
@@ -99,9 +100,9 @@ export default function TimerIntervals() {
   const intervals = watch('intervals')
 
   async function handleSetTimeIntervals(data: TimeIntervalsFormOutput) {
-    console.log(data.intervals)
+    const intervals = data.intervals
     await api.post('/users/time-intervals', {
-      data: data.intervals,
+      intervals,
     })
 
     await router.push(`/register/update-profile`)
