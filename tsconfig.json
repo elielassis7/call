@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.page.tsx",
     "*.page.tsx",
-    "src/pages/home/components/ClaimUsernameForm/index.tsx"
+    "src/pages/home/components/ClaimUsernameForm/index.tsx",
+    "src/pages/register/time-intervals/index.page.tsx",
+    "src/pages/register/time-intervals/index.page-example.tsx"
   ],
   "exclude": [
     "node_modules"

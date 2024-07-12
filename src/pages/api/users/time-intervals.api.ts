@@ -31,7 +31,8 @@ export default async function handler(
   if (!session) {
     return res.status(401).end()
   }
-
+  console.log(req.body)
+  console.log(req.body.data)
   const { intervals } = timeIntervalBodySchema.parse(req.body)
 
   await Promise.all(
