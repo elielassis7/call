@@ -7,12 +7,14 @@ import { prisma } from '@/lib/prisma'
 const timeIntervalBodySchema = z.object({
   intervals: z.array(
     z.object({
-      weekday: z.number(),
+      weekDay: z.number(),
       startTimeMinutes: z.number(),
       endTimeMinutes: z.number(),
     }),
   ),
 })
+
+type TimeIntervalBodyData = z.infer<typeof timeIntervalBodySchema>
 
 export default async function handler(
   req: NextApiRequest,
@@ -31,15 +33,17 @@ export default async function handler(
   if (!session) {
     return res.status(401).end()
   }
-  console.log(req.body)
-  console.log(req.body.data)
-  const { intervals } = timeIntervalBodySchema.parse(req.body)
+
+  const data: TimeIntervalBodyData = req.body
+  const intervals = data.intervals
+
+  console.log(intervals)
 
   await Promise.all(
     intervals.map((interval) => {
       return prisma.userTimeInterval.create({
         data: {
-          week_day: interval.weekday,
+          week_day: interval.weekDay,
           time_start_in_minutes: interval.startTimeMinutes,
           time_end_in_minutes: interval.endTimeMinutes,
           user_id: session.user.id,

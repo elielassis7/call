@@ -84,6 +84,3 @@ export default async function handle(
 
   return res.json({ possibleTimes, availableTimes })
 }
-
-// npm i @prisma/client@latest
-// npm i --save-dev prisma@latest
