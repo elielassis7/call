@@ -5,6 +5,7 @@ import React from 'react'
 import './../lib/dayjs'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@/lib/react-query'
+import { DefaultSeo } from 'next-seo'
 
 globalStyles()
 
@@ -18,14 +19,9 @@ export default function App({
         <DefaultSeo
           openGraph={{
             type: 'website',
-            locale: 'en_IE',
-            url: 'https://www.url.ie/',
-            siteName: 'SiteName',
-          }}
-          twitter={{
-            handle: '@handle',
-            site: '@site',
-            cardType: 'summary_large_image',
+            locale: 'pt-BR',
+            url: 'https://ignite-call.rocketseat.com.br',
+            siteName: 'Ignite Call',
           }}
         />
         <Component {...pageProps} />
